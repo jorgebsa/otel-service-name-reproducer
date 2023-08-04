@@ -1,7 +1,11 @@
 # otel-service-name-reproducer
 
-Reproducer to show that the fix for https://github.com/quarkusio/quarkus/issues/33317 does not actually fix it in practice,
-even though unit tests are passing.
+Reproducer to show that the fix for https://github.com/quarkusio/quarkus/issues/33317 does not actually fix all scenarios,
+even though unit tests are passing. 
+
+As figured out by @michalvavrik, this happens when the Resource has an empty attribute list. As a workaround, in order
+to use the service name on versions 3.2.1 - 3.2.3 one can set a single attribute with any value, and quarkus will resolve
+the service name properly.
 
 ## Reproducing the error
 
